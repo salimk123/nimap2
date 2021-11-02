@@ -14,6 +14,9 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,14 +26,16 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public List<Category> getAllCategory() {
-		List<Category> bookList = categoryRepository.findAll();
+	public List<Category> getAllCategory(int pageNo, int pageSize) {
+		Pageable firstPageWithTwoElements = PageRequest.of(pageNo, pageSize);
+
+		List<Category> bookList = categoryRepository.findAll(firstPageWithTwoElements).getContent();
 		
-		if (bookList.size() > 0) {
+		//if (bookList.size() > 0) {
 			return bookList;
-		} else {
-			return new ArrayList<Category>();
-		}
+		// } else {
+		// 	return new ArrayList<Category>();
+		// }
 	}
 
 	public Category getCategoryById(Long id) throws Exception {
@@ -43,7 +48,7 @@ public class CategoryService {
 		}
 	}
 
-	public String addCategory(Category entity) {
+	public String addOrUpdateCategory(Category entity) {
 
 			entity = categoryRepository.save(entity);
 			//categoryRepository.deleteById(entity.getCategoryId());

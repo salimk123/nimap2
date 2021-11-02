@@ -13,11 +13,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,9 +39,12 @@ public class CategoryApplicationController {
 
 	
 	@GetMapping("/getAllCategory")
-	public List<Category> getAllCategory() throws MalformedURLException, IOException {
+	public List<Category> getAllCategory(
+		@RequestParam(defaultValue = "0") int pageNo,
+		@RequestParam(defaultValue = "10") int pageSize
+		) throws MalformedURLException, IOException {
 
-		return categoryService.getAllCategory();
+		return categoryService.getAllCategory(pageNo,pageSize);
 	}
 	/*
 	@PostMapping("/getCategoryById")
@@ -59,13 +64,17 @@ public class CategoryApplicationController {
 	@RequestMapping("/addCategory")
 	public String addCategory(@RequestBody Category category) throws MalformedURLException, IOException {
 
-		return categoryService.addCategory(category);
+		return categoryService.addOrUpdateCategory(category);
 	}
 
-		@RequestMapping("/deleteCategory")
+	@RequestMapping("/deleteCategory")
 	public String deleteCategory(@RequestBody Category category) throws MalformedURLException, IOException {
 
 		return categoryService.delCategory(category);
+	}
+	@RequestMapping("/updateCategory")
+	public String updateProduct(@RequestBody Category category ) throws MalformedURLException, IOException {
+		return categoryService.addOrUpdateCategory(category);
 	}
 
 }

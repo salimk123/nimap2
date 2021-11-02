@@ -8,6 +8,9 @@ import com.nimap.project.dao.ProductRepository;
 import com.nimap.project.model.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,15 +19,16 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> getAllProduct() {
-        List<Product> productList=new ArrayList<>();
-        productList = productRepository.findAll();
+    public List<Product> getAllProduct(int pageNo,int pageSize) {
+		Pageable firstPageWithTwoElements = PageRequest.of(pageNo, pageSize);
 
-        if (productList.size() > 0) {
+        List<Product> productList =  productRepository.findAll(firstPageWithTwoElements).getContent();
+
+        // if (productList.size() > 0) {
 			return productList;
-		} else {
-			return new ArrayList<Product>();
-		}
+		// } else {
+		// 	return new ArrayList<Product>();
+		// }
 	}
 
 
@@ -38,7 +42,7 @@ public class ProductService {
 		}
 	}
 
-	public String addProduct(Product p) {
+	public String addOrUpdateProduct(Product p) {
 
 			p = productRepository.save(p);
 			//categoryRepository.deleteById(entity.getCategoryId());

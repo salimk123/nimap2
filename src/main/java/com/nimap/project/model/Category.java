@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nimap.project.dto.CategoryDto;
 
 import lombok.AllArgsConstructor;
@@ -34,12 +36,11 @@ public class Category {
 	private String categoryName;
 
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY,
-	cascade = CascadeType.ALL)
+	cascade = CascadeType.ALL) @JsonManagedReference
 	private Set<Product> products;
 	public  Category(long categoryId, String categoryName){
 		this.categoryName=categoryName;
 		this.categoryId=categoryId;
-
 	}
 
 }
