@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3333/getAllCategory",
+					"raw": "http://localhost:3333/getAllCategory?pageNo=0&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -19,6 +19,16 @@
 					"port": "3333",
 					"path": [
 						"getAllCategory"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
@@ -26,9 +36,21 @@
 		},
 		{
 			"name": "addcategory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\":\"Electronics\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:3333/addCategory",
 					"protocol": "http",
@@ -45,19 +67,63 @@
 		},
 		{
 			"name": "updatecategory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryId\": 37,\r\n    \"categoryName\": \"New Mobiles\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/updateCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"updateCategory"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "deletecategory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryId\":37\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/deleteCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"deleteCategory"
+					]
+				}
 			},
 			"response": []
 		},
@@ -66,16 +132,58 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:3333/getAllCategory?pageNo=0&pageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"getAllCategory"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "addproduct",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Samsung\",\r\n    \"productPrice\":123,\r\n    \"category\":{\r\n        \"categoryId\":36\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"addProduct"
+					]
+				}
 			},
 			"response": []
 		},
@@ -97,14 +205,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/UpdateProduct",
+					"raw": "http://localhost:3333/updateProduct",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"UpdateProduct"
+						"updateProduct"
 					]
 				}
 			},
@@ -112,10 +220,32 @@
 		},
 		{
 			"name": "deleteproduct",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\":37\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/deleteProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"deleteProduct"
+					]
+				}
 			},
 			"response": []
 		}
