@@ -50,9 +50,9 @@ public class ProductService {
 			return "success";
 	}
     
-	public String deleteProduct(Product p) {
+	public String deleteProduct(long productId) {
 
-        productRepository.deleteById(p.getProductId());
+        productRepository.deleteById(productId);
         //categoryRepository.deleteById(entity.getCategoryId());
 
         return "success";

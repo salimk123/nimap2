@@ -14,9 +14,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,19 +28,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimap.project.dao.CategoryRepository;
 import com.nimap.project.model.Category;
 import com.nimap.project.service.CategoryService;
-
+@RequestMapping("/category")
 @RestController
-public class CategoryApplicationController {
+public class CategoryController {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	@Autowired
-	private CategoryRepository categoryRepository;
+
 	@Autowired
 	private CategoryService categoryService;
 
 	
-	@GetMapping("/getAllCategory")
+	@GetMapping("")
 	public List<Category> getAllCategory(
 		@RequestParam(defaultValue = "0") int pageNo,
 		@RequestParam(defaultValue = "10") int pageSize
@@ -46,33 +45,19 @@ public class CategoryApplicationController {
 
 		return categoryService.getAllCategory(pageNo,pageSize);
 	}
-	/*
-	@PostMapping("/getCategoryById")
-	public Category getCategoryById( @RequestBody Category category) throws Exception {
 
-		return categoryService.getCategoryById(category.getCategoryId());
-	}
-	*/
-/*
-	@GetMapping("/{categoryID}")
-	public Category getCategoryById(@PathVariable("categoryID") long categoryID) throws Exception {
-
-		return categoryService.getCategoryById(categoryID);
-	}
-*/
-
-	@RequestMapping("/addCategory")
+	@PostMapping("/add")
 	public String addCategory(@RequestBody Category category) throws MalformedURLException, IOException {
 
 		return categoryService.addOrUpdateCategory(category);
 	}
 
-	@RequestMapping("/deleteCategory")
-	public String deleteCategory(@RequestBody Category category) throws MalformedURLException, IOException {
+	@DeleteMapping("/delete/{categoryId}")
+	public String deleteCategory(@PathVariable(required=false,name="categoryId") long categoryId) throws MalformedURLException, IOException {
 
-		return categoryService.delCategory(category);
+		return categoryService.delCategory(categoryId);
 	}
-	@RequestMapping("/updateCategory")
+	@PutMapping("/update")
 	public String updateProduct(@RequestBody Category category ) throws MalformedURLException, IOException {
 		return categoryService.addOrUpdateCategory(category);
 	}

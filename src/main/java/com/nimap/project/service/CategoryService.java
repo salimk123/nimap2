@@ -55,8 +55,8 @@ public class CategoryService {
 
 			return "success";
 	}
-	public String delCategory(Category category) {
-		categoryRepository.deleteById(category.getCategoryId());
+	public String delCategory(long categoryId) {
+		categoryRepository.deleteById(categoryId);
 		return "success";
 	}
 

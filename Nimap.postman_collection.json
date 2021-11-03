@@ -11,14 +11,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3333/getAllCategory?pageNo=0&pageSize=10",
+					"raw": "http://localhost:3333/category?pageNo=0&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"getAllCategory"
+						"category"
 					],
 					"query": [
 						{
@@ -36,11 +36,8 @@
 		},
 		{
 			"name": "addcategory",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -52,14 +49,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/addCategory",
+					"raw": "http://localhost:3333/category/add",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"addCategory"
+						"category",
+						"add"
 					]
 				}
 			},
@@ -67,11 +65,8 @@
 		},
 		{
 			"name": "updatecategory",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -83,14 +78,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/updateCategory",
+					"raw": "http://localhost:3333/category/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"updateCategory"
+						"category",
+						"update"
 					]
 				}
 			},
@@ -98,15 +94,12 @@
 		},
 		{
 			"name": "deletecategory",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"categoryId\":37\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -114,14 +107,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/deleteCategory",
+					"raw": "http://localhost:3333/category/delete/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"deleteCategory"
+						"category",
+						"delete",
+						"5"
 					]
 				}
 			},
@@ -133,14 +128,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3333/getAllCategory?pageNo=0&pageSize=10",
+					"raw": "http://localhost:3333/product?pageNo=0&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"getAllCategory"
+						"product"
 					],
 					"query": [
 						{
@@ -158,11 +153,8 @@
 		},
 		{
 			"name": "addproduct",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -174,14 +166,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/addProduct",
+					"raw": "http://localhost:3333/product/add",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"addProduct"
+						"product",
+						"add"
 					]
 				}
 			},
@@ -189,11 +182,8 @@
 		},
 		{
 			"name": "updateproduct",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -205,14 +195,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/updateProduct",
+					"raw": "http://localhost:3333/product/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"updateProduct"
+						"product",
+						"update"
 					]
 				}
 			},
@@ -220,15 +211,12 @@
 		},
 		{
 			"name": "deleteproduct",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"productId\":37\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -236,14 +224,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3333/deleteProduct",
+					"raw": "http://localhost:3333/product/delete/70",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3333",
 					"path": [
-						"deleteProduct"
+						"product",
+						"delete",
+						"70"
 					]
 				}
 			},
